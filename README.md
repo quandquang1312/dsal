@@ -2,8 +2,12 @@
 
 ## 1. data structure
 ### 1.1 prefix, suffix
-prefix sum of a ($a_0, a_1, a_2, ..., a_n$) is an array represent the cumulative sum of an array. With prefix sum at $i$ is the cumulative sum from $a_0$ to $a_i$.
-$$prefixSum[j] = \sum_{i=0}^{j}a[i]$$
+
+| Attrs | PrefixSum | SuffixSum |
+| -------- | -------- | -------- |
+| Definition     | **Prefix sum** of a ($a_0, a_1, a_2, ..., a_n$) is an array represent the cumulative sum of an array. With prefix sum at $i$ is the cumulative sum from $a_0$ to $a_i$.     | **suffix sum** of  a ($a_0, a_1, a_2, ..., a_n$) is an array represent the cumulative sum of an array from right to left.  With suffix sum at $i$ is the cumulative sum from $a_i$ to $a_n$.     |
+| Formular     | $$prefixSum[j] = \sum_{i=0}^{j}a[i]$$     | $$suffixSum[j] = \sum_{i=j}^{n}a[i]$$     |
+| Query($l,r$)     | $$sum(l,r) = prefixSum[r] - prefixSum[l-1]$$     | $$um(l,r) = suffixSum[l] - suffixSum[r+1]$$     |
 
 ### 1.2 difference array
 ### 1.3 distjoint set union
