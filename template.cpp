@@ -3,7 +3,9 @@ using namespace std;
 
 typedef long long ll;
 
+#define MOD (ll)1e9+7
 #define MAXN 200100
+
 #define FOR(i,a,b) for (int i=a; i<b; i++) 
 #define LOG(x) cout << x << "\n";
 
