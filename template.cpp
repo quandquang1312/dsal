@@ -9,8 +9,9 @@ typedef long long ll;
 #define FOR(i,a,b) for (int i=a; i<b; i++) 
 #define LOG(x) cout << x << "\n";
 
-int t, n;
+int t, n, k;
 ll arr[MAXN];
+vector<vector<vector<int>>> dp(n+1,vector<vector<int>>(k+1,vector<int>(3,0)));
 
 void solve()
 {

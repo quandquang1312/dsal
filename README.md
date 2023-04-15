@@ -12,12 +12,12 @@
 ### 1.2 difference array
 The main idea is to save all the update queries into an array and then update them to the original array later.<br>
 Difference array at first store the relative difference between elements and then use the prefix sum to update them and will DECREASE the time of updating the query.
- 
-### 1.3 distjoint set union
+
+### 1.3 disjoint set union
 
 ### 1.4 segment tree
 ### 1.5 fenwick tree (binary index tree)
 
 ## 2. algorithm
 ### 2.1 graph traverse (bfs, dfs)
-### 2.2 applied graph traverse (dijk's tra)
+### 2.2 applied graph traverse (dijk'stra)
