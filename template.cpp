@@ -2,6 +2,7 @@
 using namespace std;
 
 typedef long long ll;
+typedef unsigned long long ull;
 
 #define MOD (ll)1e9+7
 #define MAXN 200100
