@@ -24,7 +24,7 @@ while (b != 0) {
 #### Sieve of Eratosthenes algorithm:
 Is an effective way to count the number of primes from 1 to n.
 - First we store that all numbers are primes in ``is_prime`` except 0 and 1 (which is actually not)
-- For every element $i$ from 1 to $\sqrt{n}, if $i$ is prime then we mark all the $2i, 3i, ...n$ is not prime (because it has $i$ is the divisor)
+- For every element $i$ from 1 to $\sqrt{n}$, if $i$ is prime then we mark all the $2i, 3i, ...n$ is not prime (because it has $i$ is the divisor)
 - The final array ``is_prime`` represents all the primes number (if ``is_prime[i]`` is true).
 ```
 void sieve_eratosthenes(int n) {
