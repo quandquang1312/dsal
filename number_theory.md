@@ -1,5 +1,21 @@
 # Number theory
 
+## 0. Combinatorics, permutation, subsets
+Using bitwise brute forcing to get all the subsets of a given set
+```
+void getSubset(int arr[], int n) {
+    for (int i = 0; i < (1 << n); i++) {
+        cout << "{ ";
+        for (int j = 0; j < n; j++) {
+            if (i & (1 << j)) {
+                cout << arr[j] << " ";
+            }
+        }
+        cout << "}" << endl;
+    }
+}
+```
+
 ## 1. GCD, LCM
 GCD stands for Greatest Common Divisor (Ước chung lớn nhất) and LCM is Least Common Multiple (Bội chung nhỏ nhất).<br>
 Basically we can calculate the GCD of two numbers $(a,b)$ by simple Euclidean's algorithm describes as below
