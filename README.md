@@ -13,6 +13,9 @@
 The main idea is to save all the update queries into an array and then update them to the original array later.<br>
 Difference array at first store the relative difference between elements and then use the prefix sum to update them and will DECREASE the time of updating the query.
 
+http://www.usaco.org/index.php?page=viewproblem2&cpid=856
+
+
 ### 1.3 disjoint set union
 
 ### 1.4 segment tree
