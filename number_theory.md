@@ -60,3 +60,56 @@ void sieve_eratosthenes(int n) {
     }
 }
 ```
+#### Sieve of Eratosthenes in a range from l to r
+```
+vector<bool> seive(r-l+1, true);
+for (ll i=2; i*i <=n; i++) {
+    for (ll j=max(i*i, (l-i+1)/i*i); j<=r; j+=i>)
+        seive[j-l] = false;
+}
+
+if (l <= 1) seive[1-l] = false;
+for (ll x=l; x<=r; x++)
+    if (seive[x-l]) {
+        // then x is a prime
+    }
+
+
+```
+
+#### Extenxted Euclidean Algorithm
+Cho 2 số A,B. GCD(A,B) luôn có thể biểu diễn dưới dạng phương trình Ax + By = GCD(A,B) 
+```
+int gcd, x, y;
+void extendedEuclid(int A, int B) {
+    if (B == 0) {
+        gcd = A;
+        x = 1;
+        y = 0;
+    } else {
+        extendedEuclid(B, A%B) {
+            int tmp_x = x;
+            x = y;
+            y = tmp_x - (A/B)*y;
+        }
+    }
+}
+```
+
+#### Prime factor
+```
+vector<int> factor(int n) {
+    vector<int> rs;
+    for (int i=2; i*i <= n; i++) {
+        while (n % i == 0) {
+            rs.push_back(i);
+            n /= i;
+        }
+    }
+
+    if (n > 1) rs.push_back(n);
+    return rs;
+}
+```
+
+
