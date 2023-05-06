@@ -112,4 +112,35 @@ vector<int> factor(int n) {
 }
 ```
 
+### 3. Modulo and Chinese Remainder Theorem
 
+How to calculate $a^{m}$ $mod$ $n$
+``` 
+ll get(ll a, ll m, ll n) {
+	if (m == 0) return 1 % n;
+	else if (m & 1) return a * get(a,m-1,n) % n;  
+	else {
+		ll fi = get(a,m/2,n);
+		return (fi * fi ) % n;
+	}
+}
+```
+
+#### Chinese Remainder Theorem
+CRT states that there's always an integer x satisfy such multi equation
+$x$ $\equiv$ $a_i$ (mod $m_i$) where $m_i$ are pairwise prime (co-prime)
+```
+ll crt(vector<int> numbers, vector<int> remainders) {
+	ll x = 1, n = numbers.size();
+	while (true) {
+		int j;
+		for (j=0; j<n; j++)
+			if (x%numbers[j] != remainders[j])
+				break;
+
+		if (j == n) return x;
+		x++;
+	}
+	return x;
+}
+```
