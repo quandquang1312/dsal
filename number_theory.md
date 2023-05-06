@@ -112,6 +112,37 @@ vector<int> factor(int n) {
 }
 ```
 
+#### Euler's totient function
+A way of calculate euler's totient function, the below is using the divisors of n method
+
+```
+ll euler_totient_2(ll n)
+{
+	if (n == 0) return 0;
+	ll rs = n;
+	for (ll x=2; x*x <= n; x++) {
+		if (n%x == 0) {
+			rs -= rs/x;
+			while (n%x == 0) n /= x;
+		}
+	}
+
+	if (n > 1) rs -= rs/n;
+	return rs;
+}
+
+void solve()
+{
+	vector<int> m(3), x(3), y(3);
+	cin >> m[0] >> m[1] >> m[2];
+	cin >> x[0] >> x[1] >> x[2];
+	cin >> y[0] >> y[1] >> y[2];
+
+	ll rs = crt(m,x,y);
+	LOG(rs);
+}
+```
+
 ### 3. Modulo and Chinese Remainder Theorem
 
 How to calculate $a^{m}$ $mod$ $n$
