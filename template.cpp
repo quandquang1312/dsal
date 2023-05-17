@@ -14,7 +14,7 @@ const ll MOD = 1e9+7;
 #define MAXN 200100
 
 #define FOR(i,a,b) for (int i=a; i<b; i++) 
-#define LOG(x) cout << x << "\n";
+#define LOG(x) cout << x << "\n"
 
 int t, n, k;
 ll arr[MAXN];
@@ -30,7 +30,7 @@ int main()
     cin.tie(nullptr); cout.tie(nullptr);
 
     // freopen("input.txt", "r", stdin);
-	// freopen("output.txt", "w", stdout);
+    // freopen("output.txt", "w", stdout);
     
     t = 1;
     while (t--)
