@@ -2,7 +2,7 @@
 using namespace std;
 
 template<typename ... Args>
-void print(Args ... args) {
+void debug(Args ... args) {
     ((cout << args << " "), ...);
     cout << endl;
 }
@@ -29,10 +29,15 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr); cout.tie(nullptr);
 
-    // freopen("input.txt", "r", stdin);
-    // freopen("output.txt", "w", stdout);
-    
+    #ifdef LOCAL
+        // freopen("input.txt", "r", stdin);
+        // freopen("output.txt", "w", stdout);
+    #endif
+
     t = 1;
+    #ifdef LOCAL
+        cin >> t;
+    #endif
     while (t--)
         solve();
     return 0;
