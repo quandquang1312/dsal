@@ -1,49 +1,70 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+#define int long long
+
 class FenwickTree {
-public:
-    FenwickTree(int n) {
-        this->n = n;
-        ft1.assign(n, 0);
-        ft2.assign(n, 0);
-    }
-
-    FenwickTree(vector<int> arr) : FenwickTree(arr.size()) {
-        for (int i=0; i<arr.size(); i++)
-            add(i, arr[i]);
-    }
-
-    void add(vector<int> &ft, int idx, int vl) {
-        for (; idx < n; idx = idx | (idx + 1))
-            ft[idx] += vl;
-    }
-
-    void range_add(int l, int r, int x) {
-        add(this->ft1, l, x);
-        add(this->ft1, r+1, -x);
-        add(this->ft2, l, x*(l-1));
-        add(this->ft2, r+1, -x*r);
-    }
-
-    int range_sum(int l, int r) {
-        return prefix_sum(r) - prefix_sum(l-1);
-    }
-
 private:
-    vector<int> ft1, ft2;
-    int n;
+    std::vector<long long> BIT1, BIT2;
 
-private:
-    int g(int i) { return i & (i + 1); }
-
-    int sum(vector<int>& ft, int i) {
-        int rs = 0;
-        while (i >= 0) {
-            rs += ft[i];
-            i = g(i) - 1;
+    void update(std::vector<long long> &BIT, int index, long long value) {
+        while (index < BIT.size()) {
+            BIT[index] += value;
+            index += index & (-index);
         }
-        return rs;
     }
 
-    int prefix_sum(int idx) {
-        return sum(this->ft1, idx) * idx - sum(ft2, idx);
+    long long query(const std::vector<long long> &BIT, int index) {
+        long long sum = 0;
+        while (index > 0) {
+            sum += BIT[index];
+            index -= index & (-index);
+        }
+        return sum;
+    }
+
+public:
+    FenwickTree(int size) : BIT1(size + 1, 0), BIT2(size + 1, 0) {}
+
+    void rangeUpdate(int left, int right, long long value) {
+        update(BIT1, left, value);
+        update(BIT1, right + 1, -value);
+        update(BIT2, left, value * (left - 1));
+        update(BIT2, right + 1, -value * right);
+    }
+
+    long long prefixSum(int index) {
+        return query(BIT1, index) * index - query(BIT2, index);
+    }
+
+    long long rangeQuery(int left, int right) {
+        return prefixSum(right) - prefixSum(left - 1);
     }
 };
+
+int32_t main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr); cout.tie(nullptr);
+
+    freopen("input.in", "r", stdin);
+
+    int n; cin >> n;
+
+    vector<FenwickTree> fts(101, FenwickTree(n));
+    for (int i=1; i<=n; i++) {
+        int x; cin >> x;
+        fts[x].rangeUpdate(i,i,1);
+    }
+
+    int q; cin >> q;
+    while (q--) {
+        int l, r, vl;
+        cin >> l >> r >> vl;
+        l++; r++;
+        int ans = fts[vl].rangeQuery(l, r);
+
+        cout << ans << endl;
+    }
+
+    return 0;
+}
